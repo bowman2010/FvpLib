@@ -77,6 +77,38 @@ public class Utils {
         return (number >= min && number <=max);
     }
     
+    
+       
+/**
+ * dotAligned - format a double 
+ * Return a dot aligned double representation
+ * @param iPlaces places for integer part
+ * @param dPlaces places for decimal part
+ * @param value   Formatted 
+ * @return 
+ */
+    public static String dotAligned (
+            int iPlaces, 
+            int dPlaces, double value)
+    {
+      StringBuilder sb1 = new StringBuilder(iPlaces);
+      StringBuilder sb2 = new StringBuilder(dPlaces);
+
+      int iPart = (int) value;
+      int dPart = (int) ((value-iPart)*Math.pow(10, dPlaces));
+      
+      sb1.append(iPart);
+      while (sb1.length()<iPlaces) sb1.insert(0, ' ');
+              
+      sb2.append(dPart);
+      if (sb2.length()>dPlaces) sb2.delete(dPlaces+1,2000);
+      
+      return sb1.toString()+'.'+sb2.toString();
+    }
+    
+    
+ 
+    
     public static String strPad(String s, int width, char p) {
         int len = s.length();
         String ts1 = "";
