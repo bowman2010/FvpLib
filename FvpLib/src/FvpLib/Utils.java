@@ -44,9 +44,7 @@ public class Utils {
  * @return a double
  */    
     public static double askForDouble(String prompt) {
-        Scanner kbd=kbdScan();
-        boolean isOkay = false;
-        
+        Scanner kbd=kbdScan();        
         do {
             System.out.print(prompt);
             if (kbd.hasNextDouble()) return kbd.nextDouble();
