@@ -172,6 +172,18 @@ public class Matrix {
         this.mtx[line-1][column-1] = value;
     }
 
+    public void setLine(int lineNb, double[] values) throws MatrixException {
+        int nbcols = this.getNbColumns();
+        if (nbcols != values.length) 
+            throw new MatrixException("Array size not compatibe");
+        if (lineNb <1 || lineNb >this.getNbLines())
+            throw new MatrixException("Invalid line number");
+        for (int i=1; i<=nbcols; i++) {
+            setLC(lineNb, i, values[i-1]);
+        }
+            
+    }
+    
     public double[] getLine(int line) {
         double[] result = new double[this.nbColumns];
         for (int col=1; col<=this.nbColumns; col++) {
